@@ -30,20 +30,20 @@ export const Login =async(req:Request, res:Response)=>{
 
 const {username,password} = req.body;
 try{
-await prisma.user.findFirst({
+ let user=await prisma.user.findFirst({
     where:{
         username,
         password,
     },
 });
-// if(!user){
-//     res.json({
-//         message:"woring username or password",
-//     });
-// } res.json({
-//     message:`wellcome back ${user?.id}`,
+if(!user){
+    res.json({
+        message:"woring username or password",
+    });
+} res.json({
+    message:`wellcome back ${user?.id}`,
 
-// })
+})
 } catch(error){
     console.log(error);
     

@@ -64,7 +64,7 @@ export const updateBlog = async (req: Request, res: Response) => {
   
     try {
     
-          const blog = await prisma.blog.update({
+          const blogs = await prisma.blog.update({
             where: {
               id: id,
             },
@@ -72,6 +72,8 @@ export const updateBlog = async (req: Request, res: Response) => {
               title: title,
             },
           });
+          res.json(blogs)
+
           
       }
      catch (error) {
